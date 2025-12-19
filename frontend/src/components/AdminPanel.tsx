@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { tablesApi, bookingsApi, RestaurantTable, Booking } from '../lib/api';
 import FoodManagement from './FoodManagement';
 import { Plus, Trash2, Unlock, RefreshCw, Upload, Clock } from 'lucide-react';
+const BASE_URL = "https://gg-d25n.onrender.com";
+
 
 export default function AdminPanel() {
   const [tables, setTables] = useState<RestaurantTable[]>([]);
@@ -50,7 +52,8 @@ export default function AdminPanel() {
 
   const fetchCarouselImages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/carousel-images');
+      const response = await fetch(`${BASE_URL}/api/carousel-images`);
+
       if (response.ok) {
         const images = await response.json();
         setCarouselImages(images);
@@ -75,7 +78,7 @@ export default function AdminPanel() {
 
   const updateCarouselImages = async (images: string[]) => {
     try {
-      const response = await fetch('http://localhost:5000/api/carousel-images', {
+      const response = await fetch(`${BASE_URL}/api/carousel-images`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +100,7 @@ export default function AdminPanel() {
 
   const deleteCarouselImage = async (index: number) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/carousel-images/${index}`, {
+      const response = await fetch(`${BASE_URL}/api/carousel-images/${index}`, {
         method: 'DELETE',
       });
       
@@ -118,7 +121,7 @@ export default function AdminPanel() {
       const formData = new FormData();
       formData.append('image', file);
       
-      const response = await fetch(`http://localhost:5000/api/carousel-images/${index}`, {
+      const response = await fetch(`${BASE_URL}/api/carousel-images/${index}`, {
         method: 'PUT',
         body: formData,
       });
@@ -205,7 +208,7 @@ export default function AdminPanel() {
       const formData = new FormData();
       formData.append('image', file);
       
-      const response = await fetch('http://localhost:5000/api/upload-carousel', {
+      const response = await fetch(`${BASE_URL}/api/upload-carousel`, {
         method: 'POST',
         body: formData,
       });

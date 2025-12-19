@@ -52,7 +52,7 @@ export default function UserBooking() {
 
   const fetchCarouselImages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/carousel-images');
+      const response = await fetch(`${BASE_URL}/api/carousel-images');
       if (response.ok) {
         const images = await response.json();
         setCarouselImages(images);
