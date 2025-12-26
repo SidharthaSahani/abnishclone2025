@@ -55,7 +55,13 @@ export default function UserBooking() {
      const response = await fetch(`${API_BASE_URL}/api/carousel-images`);
       if (response.ok) {
         const images = await response.json();
-        setCarouselImages(images);
+        // Validate that images is an array before setting
+        setCarouselImages(Array.isArray(images) ? images : [
+          'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+        ]);
       } else {
         // Fallback to sample images if API fails
         setCarouselImages([
