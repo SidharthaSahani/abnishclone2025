@@ -38,13 +38,13 @@ export default function Navbar({ isAdmin = false, adminEmail, onLogout }: Navbar
           {/* Left side: Logo and Restaurant Name */}
           <div className="flex items-center gap-4">
             <a href="/" className="flex items-center gap-4">
-              <img 
+              <img
                 src="/logoHD.png" 
                 alt="Grill & Gathering Logo" 
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-contain" 
               />
               <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-                {isAdmin ? 'Restaurant Admin' : 'Grill & Gathering'}
+                {isAdmin ? 'Restaurant Admin' : 'Grill & Gather'}
               </h1>
             </a>
           </div>
