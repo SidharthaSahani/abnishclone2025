@@ -35,6 +35,14 @@ export default function BookingForm({ table, onClose, onSubmit, initialTime, ini
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate phone number format (10 digits)
+    const phoneDigits = formData.customer_phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 10) {
+      alert('Phone number must be exactly 10 digits');
+      return;
+    }
+    
     onSubmit(formData);
   };
 
@@ -102,9 +110,14 @@ export default function BookingForm({ table, onClose, onSubmit, initialTime, ini
               value={formData.customer_phone}
               onChange={handleChange}
               required
+              minLength={10}
+              maxLength={10}
               className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
-              placeholder="+977 1234567890"
+              placeholder="1234567890"
             />
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+              Enter exactly 10 digits
+            </p>
           </div>
 
           <div>

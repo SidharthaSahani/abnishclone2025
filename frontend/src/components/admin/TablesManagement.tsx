@@ -114,6 +114,7 @@ export const TablesManagement = ({ selectedDate }: TablesManagementProps) => {
               <th className="text-left py-2 px-2 sm:py-3 sm:px-4 font-semibold text-gray-700 text-sm sm:text-base">Table</th>
               <th className="text-left py-2 px-2 sm:py-3 sm:px-4 font-semibold text-gray-700 text-sm sm:text-base">Capacity</th>
               <th className="text-left py-2 px-2 sm:py-3 sm:px-4 font-semibold text-gray-700 text-sm sm:text-base">Active Bookings</th>
+              <th className="text-left py-2 px-2 sm:py-3 sm:px-4 font-semibold text-gray-700 text-sm sm:text-base">Status</th>
               <th className="text-right py-2 px-2 sm:py-3 sm:px-4 font-semibold text-gray-700 text-sm sm:text-base">Actions</th>
             </tr>
           </thead>
@@ -129,6 +130,16 @@ export const TablesManagement = ({ selectedDate }: TablesManagementProps) => {
                     <td className="py-2 px-2 sm:py-3 sm:px-4 text-sm sm:text-base">{table.capacity} seats</td>
                     <td className="py-2 px-2 sm:py-3 sm:px-4 text-sm sm:text-base">{tableBookings.length}</td>
                     <td className="py-2 px-2 sm:py-3 sm:px-4">
+                      <div className="flex items-center gap-2">
+                        <span className={`inline-block w-3 h-3 rounded-full ${tableBookings.length >= 1 ? 'bg-green-500' : 'bg-red-500'}`} title={tableBookings.length >= 1 ? 'Booked' : 'Available'}>
+                          <span className="sr-only">{tableBookings.length >= 1 ? 'Booked' : 'Available'}</span>
+                        </span>
+                        <span className="text-sm font-semibold">
+                          {tableBookings.length >= 1 ? 'Table is booked' : 'No table booked'}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-2 px-2 sm:py-3 sm:px-4">
                       <div className="flex justify-end gap-1 sm:gap-2">
                         <button
                           onClick={() => setExpandedTable(isExpanded ? null : table.id)}
@@ -139,7 +150,7 @@ export const TablesManagement = ({ selectedDate }: TablesManagementProps) => {
                         </button>
                         <button
                           onClick={() => handleDeleteTable(table.id)}
-                          className="p-1.5 sm:p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+                          className="p-1.5 sm:p-2 text-red-600 hover:bg-red-500 rounded-lg transition"
                           title="Delete Table"
                         >
                           <Trash2 size={16} className="sm:size-18" />
