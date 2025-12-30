@@ -17,7 +17,7 @@ export default function AboutUs() {
       
       <main className="max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8 flex-grow w-full">
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">About Grill & Gathering</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">About GrillS & Gather</h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Discover our story, mission, and commitment to providing exceptional dining experiences
           </p>
@@ -128,7 +128,7 @@ export default function AboutUs() {
             </div>
           </div>
           <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Grill & Gathering. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Grills & Gather. All rights reserved.</p>
           </div>
         </div>
       </footer>
